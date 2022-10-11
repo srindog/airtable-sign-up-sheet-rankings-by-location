@@ -46,14 +46,14 @@ function CityRankingChart({ city, rankings }: CityRankingChartProps) {
   
   return (
     <div className="rounded-xl shadow-md">
-      <div className='flex flex-col w-full p-5'>
-        <header className='text-2xl justify-center w-full items-center'>{getCityWithEmoji(city)}</header>
-        <table className='border-separate text-lg w-full mt-3'>
+      <div className='flex flex-col p-5'>
+        <header className='text-normal justify-center items-center'>{getCityWithEmoji(city)}</header>
+        <table className='border-separate text-lg mt-3'>
           <thead>
             <tr>
-              <th className='text-xs md:text-lg lg:text-xl font-light'>Place</th>
-              <th className='text-xs md:text-lg lg:text-xl font-light'>Neighborhood</th>
-              <th className='text-xs md:text-lg lg:text-xl font-light'>Sign Ups</th>
+              <th className='text-sm md:text-base font-light'>Place</th>
+              <th className='text-sm md:text-base font-light'>Neighborhood</th>
+              <th className='text-sm md:text-base font-light'>Sign Ups</th>
             </tr>
           </thead>
           <tbody>
@@ -63,9 +63,9 @@ function CityRankingChart({ city, rankings }: CityRankingChartProps) {
               const backgroundColor = getBackgroundColor(place)
               return (
                 <tr key={i} className={`rounded-lg ${backgroundColor}`}>
-                  <th className='text-sm md:text-lg lg:text-xl font-light'>{`${place}${ext}`}</th>
-                  <th className='text-sm md:text-lg lg:text-xl font-light'>{ranking.neighborhood}</th>
-                  <th className='text-sm md:text-lg lg:text-xl font-light'>{ranking.count}</th>
+                  <th className='text-sm md:text-base font-light'>{`${place}${ext}`}</th>
+                  <th className='text-sm md:text-base font-light'>{ranking.neighborhood}</th>
+                  <th className='text-sm md:text-base font-light'>{ranking.count}</th>
                 </tr>
               )})}
           </tbody>
