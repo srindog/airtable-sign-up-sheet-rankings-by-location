@@ -46,12 +46,23 @@ const Home: NextPage = () => {
     const rankings = neighborhoodCounts.sort((a, b) => b.count - a.count)
     
     return {city, rankings};
-}
+  }
+
+  const calculateTotalSignups = (cityRankings: any) => {
+    let totalSignUps = 0
+    cityRankings.forEach((cityRanking: CityRanking) => 
+      cityRanking.rankings.forEach((ranking: Ranking) => totalSignUps += ranking.count)
+    )
+    return totalSignUps
+  }
+
+
   if (!records) {
     return <Loading />
   }
 
   const cityRankings: any = CITIES.map((city) => getSortedCountsOfNeighborhoodByCity(city))
+  const totalSignUps: number = calculateTotalSignups(cityRankings)
 
   return (
     <div className="">
@@ -64,8 +75,11 @@ const Home: NextPage = () => {
       <main className="w-screen h-screen">
         <div className='mx-5 mt-7 md:mx-20'>
           <div className='flex flex-col md:flex-row w-full items-center md:justify-between'>
-            <div className='text-sm md:text-base'>
+            <div className='text-base'>
               {COMPANY_NAME} Waitlist Rankings
+            </div>
+            <div className='mt-4 md:mt-0 text-base'>
+              {totalSignUps} total sign ups
             </div>
             <div className='mt-4 md:mt-0'>
               <a className='text-sm p-3 bg-blue-200 hover:bg-blue-100 active:bg-blue-200 justify-center text-sm md:text-md lg:text-normal rounded-lg' href="https://villageloot.carrd.co">
@@ -73,7 +87,7 @@ const Home: NextPage = () => {
               </a>
             </div>
           </div>
-          
+
           
           
           <div className='mt-4 grid grid-cols-1 gap-4'>

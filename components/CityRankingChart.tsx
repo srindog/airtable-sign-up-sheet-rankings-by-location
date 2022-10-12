@@ -44,10 +44,20 @@ function CityRankingChart({ city, rankings }: CityRankingChartProps) {
     return <></>;
   }
   
+  const calculateTotalCitySignUps = () => {
+    const sum = rankings.reduce((accumulator, ranking) => {
+      return accumulator + ranking.count;
+    }, 0);
+    return sum
+  }
+
+  const totalCitySignUps = calculateTotalCitySignUps()
+  
+  
   return (
     <div className="rounded-xl shadow-md">
       <div className='flex flex-col p-5'>
-        <header className='text-normal justify-center items-center'>{getCityWithEmoji(city)}</header>
+        <header className='text-normal justify-center items-center'>{totalCitySignUps} in {getCityWithEmoji(city)} {totalCitySignUps === 1 ? 'has' : 'have'} already joined!</header>
         <table className='border-separate text-lg mt-3'>
           <thead>
             <tr>
