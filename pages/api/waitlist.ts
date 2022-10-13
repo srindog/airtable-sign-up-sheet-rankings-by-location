@@ -1,6 +1,7 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
 import { table } from "../../utils/Airtable";
+import { groupInputCity } from "../../utils/cities";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -17,8 +18,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         if (emailToInfo.has(email) || !fullNeighborhood) {
           return;
         }
+
         const [neighborhood, city] = fullNeighborhood.split(',')
-        emailToInfo.set(email, { neighborhood, city: city.trim() })
+        if (city) {
+          const groupedCity = groupInputCity(city.trim())
+          emailToInfo.set(email, { neighborhood, city: groupedCity })
+        }
       });
       // To fetch the next page of records, call `fetchNextPage`.
       // If there are more records, `page` will get called again.
@@ -27,6 +32,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   
     }, function done(err: any) {
         if (err) { console.error(err); return; }
+        // console.log(emailToInfo)
         const waitlist = Array.from(emailToInfo, ([key, value]) => (value));
         return res.status(200).json(waitlist);
     });

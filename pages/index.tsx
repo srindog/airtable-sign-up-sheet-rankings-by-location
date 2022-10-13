@@ -61,7 +61,7 @@ const Home: NextPage = () => {
     return <Loading />
   }
 
-  const cityRankings: any = CITIES.map((city) => getSortedCountsOfNeighborhoodByCity(city))
+  const cityRankings: any = CITIES.map((city) => getSortedCountsOfNeighborhoodByCity(city.label))
   const totalSignUps: number = calculateTotalSignups(cityRankings)
 
   return (
