@@ -1,4 +1,4 @@
-## airtable-sign-up-sheet-rankings
+## sign-up-sheet-rankings
 
 Experiment: Connects to an airtable sign up sheet, displays rankings on which nyc neighborhood has the most sign ups
 
