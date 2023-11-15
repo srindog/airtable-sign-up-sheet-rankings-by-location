@@ -1,6 +1,6 @@
-## airtable-rankings-chart
+## airtable-sign-up-sheet-rankings
 
-Connects to an airtable sign up sheet, displays rankings on which nyc neighborhood has the most sign ups
+Experiment: Connects to an airtable sign up sheet, displays rankings on which nyc neighborhood has the most sign ups
 
 ## Running
 
