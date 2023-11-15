@@ -1,4 +1,4 @@
-## community-chest-rankings
+## airtable-rankings-chart
 
 Connects to an airtable sign up sheet, displays rankings on which nyc neighborhood has the most sign ups
 
